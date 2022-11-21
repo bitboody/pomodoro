@@ -184,8 +184,9 @@ input:checked + .slider:before {
 
 .toggle-btn {
     position: absolute;
-    top: 76%;
+    top: 100%;
     left: 50%;
+    padding-top: 6em;
     transform: translate(-50%, -50%);
     text-align: center;
 }
@@ -193,12 +194,23 @@ input:checked + .slider:before {
 #sliderlabel {
   color: white;
   position:absolute ;
-  top: 80%;
+  top: 100%;
   left: 50%;  
+  padding-top: 1em;
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 20px;
   font-family: arial, sans-serif;
   font-weight: 450;
   display: grid;
+}
+
+@media (max-width:641px) {
+  #sliderlabel {
+    padding-top: 2em;
+  }
+
+  .toggle-btn {
+    padding-top: 9em;
+  }
 }
