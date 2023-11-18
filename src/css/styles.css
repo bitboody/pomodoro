@@ -200,9 +200,13 @@ progress::-webkit-progress-value {
 	transform: rotate(-45deg);
 }
 
+.social-links a {
+	transition: opacity 0.2s ease-in-out 0s;
+}
 .social-links a:hover {
 	opacity: 0.85;
 }
+
 input {
 	padding: 6px 12px;
 	background: rgb(31, 32, 35);
