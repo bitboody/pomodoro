@@ -183,7 +183,7 @@ const breakSetting = document.getElementById("break-setting");
 const lbreakSetting = document.getElementById("lbreak-setting");
 const lbreakInterval = document.getElementById("lbreak-interval");
 
-pomodoroSetting.addEventListener("keyup", () => {
+pomodoroSetting.addEventListener("keyup", (e) => {
 	if (e.key === "Enter") {
 		if (
 			pomodoroSetting.value === "" ||
@@ -201,7 +201,7 @@ pomodoroSetting.addEventListener("keyup", () => {
 	}
 });
 
-breakSetting.addEventListener("keyup", () => {
+breakSetting.addEventListener("keyup", (e) => {
 	if (e.key === "Enter") {
 		if (
 			breakSetting.value === "" ||
@@ -237,7 +237,7 @@ lbreakSetting.addEventListener("keyup", (e) => {
 	}
 });
 
-lbreakInterval.addEventListener("keyup", () => {
+lbreakInterval.addEventListener("keyup", (e) => {
 	if (e.key === "Enter") {
 		if (
 			lbreakInterval.value === "" ||
