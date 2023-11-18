@@ -1,3 +1,7 @@
+window.onload = function () {
+	console.log(document.getElementsByClassName("checkbox").checked);
+};
+
 const timer = {
 	pomodoro: localStorage.getItem("pomodoro") || 25,
 	shortBreak: localStorage.getItem("shortBreak") || 5,
@@ -182,75 +186,66 @@ const pomodoroSetting = document.getElementById("pomodoro-setting");
 const breakSetting = document.getElementById("break-setting");
 const lbreakSetting = document.getElementById("lbreak-setting");
 const lbreakInterval = document.getElementById("lbreak-interval");
+const saveButton = document.getElementById("save-button");
 
-pomodoroSetting.addEventListener("keyup", (e) => {
-	if (e.key === "Enter") {
-		if (
-			pomodoroSetting.value === "" ||
-			typeof Number(pomodoroSetting.value) !== "number"
-		)
-			return;
+pomodoroSetting.addEventListener("input", () => {
+	if (
+		pomodoroSetting.value === "" ||
+		typeof Number(pomodoroSetting.value) !== "number"
+	)
+		return;
 
-		let time = Number(pomodoroSetting.value);
-		if (pomodoroSetting.value > pomodoroSetting.max) time = 25;
-		if (pomodoroSetting.value < pomodoroSetting.min) time = 25;
+	let time = Number(pomodoroSetting.value);
+	if (pomodoroSetting.value > pomodoroSetting.max) time = 25;
+	if (pomodoroSetting.value < pomodoroSetting.min) time = 25;
 
-		timer.pomodoro = time;
-		localStorage.setItem("pomodoro", time);
-		location.reload();
-	}
+	timer.pomodoro = time;
 });
 
-breakSetting.addEventListener("keyup", (e) => {
-	if (e.key === "Enter") {
-		if (
-			breakSetting.value === "" ||
-			typeof Number(breakSetting.value) !== "number"
-		)
-			return;
+breakSetting.addEventListener("input", () => {
+	if (
+		breakSetting.value === "" ||
+		typeof Number(breakSetting.value) !== "number"
+	)
+		return;
 
-		let time = Number(breakSetting.value);
-		if (breakSetting.value > breakSetting.max) time = 5;
-		if (breakSetting.value < breakSetting.min) time = 5;
+	let time = Number(breakSetting.value);
+	if (breakSetting.value > breakSetting.max) time = 5;
+	if (breakSetting.value < breakSetting.min) time = 5;
 
-		timer.shortBreak = time;
-		localStorage.setItem("shortBreak", time);
-		location.reload();
-	}
+	timer.shortBreak = time;
 });
 
-lbreakSetting.addEventListener("keyup", (e) => {
-	if (e.key === "Enter") {
-		if (
-			lbreakSetting.value === "" ||
-			typeof Number(lbreakSetting.value) !== "number"
-		)
-			return;
+lbreakSetting.addEventListener("input", () => {
+	if (
+		lbreakSetting.value === "" ||
+		typeof Number(lbreakSetting.value) !== "number"
+	)
+		return;
 
-		let time = Number(lbreakSetting.value);
-		if (lbreakSetting.value > lbreakSetting.max) time = 15;
-		if (lbreakSetting.value < lbreakSetting.min) time = 15;
+	let time = Number(lbreakSetting.value);
+	if (lbreakSetting.value > lbreakSetting.max) time = 15;
+	if (lbreakSetting.value < lbreakSetting.min) time = 15;
 
-		timer.longBreak = time;
-		localStorage.setItem("longBreak", time);
-		location.reload();
-	}
+	timer.longBreak = time;
 });
 
-lbreakInterval.addEventListener("keyup", (e) => {
-	if (e.key === "Enter") {
-		if (
-			lbreakInterval.value === "" ||
-			typeof Number(lbreakInterval.value) !== "number"
-		)
-			return;
+lbreakInterval.addEventListener("input", () => {
+	if (
+		lbreakInterval.value === "" ||
+		typeof Number(lbreakInterval.value) !== "number"
+	)
+		return;
 
-		let interval = Number(lbreakInterval.value);
-		if (lbreakInterval.value > lbreakInterval.max) interval = 15;
-		if (lbreakInterval.value < lbreakInterval.min) interval = 15;
+	let interval = Number(lbreakInterval.value);
+	if (lbreakInterval.value > lbreakInterval.max) interval = 15;
+	if (lbreakInterval.value < lbreakInterval.min) interval = 15;
+});
 
-		timer.longBreakInterval = interval;
-		localStorage.setItem("longBreakInterval", interval);
-		location.reload();
-	}
+saveButton.addEventListener("click", () => {
+	localStorage.setItem("pomodoro", Number(pomodoroSetting.value));
+	localStorage.setItem("shortBreak", Number(breakSetting.value));
+	localStorage.setItem("longBreak", Number(lbreakSetting.value));
+	localStorage.setItem("longBreakInterval", Number(lbreakInterval.value));
+	location.reload();
 });
