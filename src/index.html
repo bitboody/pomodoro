@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<title>Pomodoro by w7x8</title>
+		<link rel="stylesheet" href="./css/styles.css" />
+	</head>
+	<body>
+		<nav>
+			<div class="navbar">
+				<div class="container nav-container">
+					<input class="checkbox" type="checkbox" name="" id="settings" />
+					<div class="hamburger-lines">
+						<span class="line line1"></span>
+						<span class="line line2"></span>
+						<span class="line line3"></span>
+					</div>
+					<div class="logo">
+						<h1>Pomody</h1>
+					</div>
+					<div class="menu-items">
+						<div id="menu-container">
+							<li>Settings</li>
+							<li><input id="pomodoro-setting" type="tel" min="20" max="60" placeholder="Pomodoro time"></li>
+							<li><input id="break-setting" type="tel" min="1" max="10" placeholder="Break time"></li>
+							<li><input id="lbreak-setting" type="tel" min="0" max="15" placeholder="Long break time"></li>
+							<li><input id="lbreak-interval" type="tel" min="3" max="5" placeholder="Long break interval"></li>
+							<li><button id="reset-button" onclick="localStorage.clear(); location.reload();">Reset</button></li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- <button id="settings"><i class="fa-solid fa-gear"></i></button> -->
+		<progress id="js-progress" value="0"></progress>
+		<main class="app">
+			<div class="progress-bar"></div>
+			<div class="timer">
+				<div class="button-group mode-buttons" id="js-mode-buttons">
+					<button
+						data-mode="pomodoro"
+						class="button active mode-button"
+						id="js-pomodoro"
+					>
+						Pomodoro
+					</button>
+					<button
+						data-mode="shortBreak"
+						class="button mode-button"
+						id="js-short-break"
+					>
+						Short break
+					</button>
+					<button
+						data-mode="longBreak"
+						class="button mode-button"
+						id="js-long-break"
+					>
+						Long break
+					</button>
+				</div>
+				<div class="clock" id="js-clock">
+					<span id="js-minutes">25</span>
+					<span class="separator">:</span>
+					<span id="js-seconds">00</span>
+				</div>
+				<button class="main-button" data-action="start" id="js-btn">
+					Start
+				</button>
+				<!-- <div class="toggle-btn"> -->
+				<!-- 	<label class="switch"> -->
+				<!-- 		<input -->
+				<!-- 			type="checkbox" -->
+				<!-- 			id="sound-chkbx" -->
+				<!-- 			onchange="checkboxToggle(this)" -->
+				<!-- 		/> -->
+				<!-- 		<span class="slider round"></span> -->
+				<!-- 	</label> -->
+				<!-- </div> -->
+				<!-- <div class="labeldiv"> -->
+				<!-- 	<p id="sliderlabel">White noise for focus :p</p> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		</main>
+		<div class="hidden">
+			<audio src="../assets/backtowork.mp3" data-sound="pomodoro"></audio>
+			<audio src="../assets/break.mp3" data-sound="shortBreak"></audio>
+			<audio src="../assets/break.mp3" data-sound="longBreak"></audio>
+		</div>
+		<script type="module" src="./js/main.js"></script>
+		<script type="module" src="./js/three.js"></script>
+	</body>
+</html>
