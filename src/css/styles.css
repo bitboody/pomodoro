@@ -33,7 +33,7 @@ progress {
 	border-color: #5c5c5c;
 	width: 100%;
 	height: 12px;
-	position: fixed;
+	position:	absolute;
 	top: 0;
 }
 
@@ -200,6 +200,9 @@ progress::-webkit-progress-value {
 	transform: rotate(-45deg);
 }
 
+.social-links a:hover {
+	opacity: 0.85;
+}
 input {
 	padding: 6px 12px;
 	background: rgb(31, 32, 35);
@@ -219,7 +222,7 @@ input:focus {
 	border-color: rgb(100, 153, 255);
 }
 
-#reset-button {
+.button-settings {
 	background: rgb(31, 32, 35);
 	border: 1px solid rgb(60, 63, 68);
 	border-radius: 4px;
@@ -232,14 +235,13 @@ input:focus {
 	text-align: center;
 }
 
-#reset-button:hover {
+.button-settings:hover {
 	cursor: pointer;
 	opacity: 0.85;
 	outline: none;
 	box-shadow: none;
 	border-color: rgb(100, 153, 255);
 }
-
 
 .timer {
 	position: absolute;

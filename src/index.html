@@ -14,11 +14,16 @@
 		<title>Pomodoro by w7x8</title>
 		<link rel="stylesheet" href="./css/styles.css" />
 	</head>
-	<body>
+	<body style="overflow: hidden">
 		<nav>
 			<div class="navbar">
 				<div class="container nav-container">
-					<input class="checkbox" type="checkbox" name="" id="settings" />
+					<input
+						class="checkbox"
+						type="checkbox"
+						autocomplete="off"
+						id="settings"
+					/>
 					<div class="hamburger-lines">
 						<span class="line line1"></span>
 						<span class="line line2"></span>
@@ -28,13 +33,74 @@
 						<h1>Pomody</h1>
 					</div>
 					<div class="menu-items">
-						<div id="menu-container">
+						<ul id="menu-container">
 							<li>Settings</li>
-							<li><input id="pomodoro-setting" type="tel" min="20" max="60" placeholder="Pomodoro time"></li>
-							<li><input id="break-setting" type="tel" min="1" max="10" placeholder="Break time"></li>
-							<li><input id="lbreak-setting" type="tel" min="0" max="15" placeholder="Long break time"></li>
-							<li><input id="lbreak-interval" type="tel" min="3" max="5" placeholder="Long break interval"></li>
-							<li><button id="reset-button" onclick="localStorage.clear(); location.reload();">Reset</button></li>
+							<li>
+								<input
+									id="pomodoro-setting"
+									autocomplete="off"
+									type="tel"
+									min="20"
+									max="60"
+									placeholder="Pomodoro time"
+								/>
+							</li>
+							<li>
+								<input
+									id="break-setting"
+									autocomplete="off"
+									type="tel"
+									min="1"
+									max="10"
+									placeholder="Break time"
+								/>
+							</li>
+							<li>
+								<input
+									id="lbreak-setting"
+									autocomplete="off"
+									type="tel"
+									min="0"
+									max="15"
+									placeholder="Long break time"
+								/>
+							</li>
+							<li>
+								<input
+									id="lbreak-interval"
+									autocomplete="off"
+									type="tel"
+									min="3"
+									max="5"
+									placeholder="Long break interval"
+								/>
+							</li>
+							<li>
+								<button
+									class="button-settings"
+									autocomplete="off"
+									id="save-button"
+									onclick="location.reload();"
+								>
+									Save settings
+								</button>
+								<button
+									class="button-settings"
+									autocomplete="off"
+									id="reset-button"
+									onclick="localStorage.clear(); location.reload();"
+								>
+									Reset settings
+								</button>
+							</li>
+						</ul>
+						<div class="social-links">
+							<a href="https://github.com/brplcc" target="_blank" style="font-size: 30px; margin-right: 5px;">
+								<i class="fa-brands fa-github"></i>
+							</a>
+							<a href="https://twitter.com/brplcc" target="_blank" style="font-size: 30px;">
+								<i class="fa-brands fa-twitter"></i>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -89,7 +155,8 @@
 				<!-- <div class="labeldiv"> -->
 				<!-- 	<p id="sliderlabel">White noise for focus :p</p> -->
 				<!-- </div> -->
-			<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</main>
 		<div class="hidden">
 			<audio src="../assets/backtowork.mp3" data-sound="pomodoro"></audio>
