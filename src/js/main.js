@@ -1,7 +1,3 @@
-window.onload = function () {
-	console.log(document.getElementsByClassName("checkbox").checked);
-};
-
 const timer = {
 	pomodoro: localStorage.getItem("pomodoro") || 25,
 	shortBreak: localStorage.getItem("shortBreak") || 5,
@@ -182,70 +178,39 @@ settings.addEventListener("click", () => {
 	}
 });
 
+const digits_only = (string) =>
+	[...string].every((c) => "0123456789".includes(c));
+
 const pomodoroSetting = document.getElementById("pomodoro-setting");
 const breakSetting = document.getElementById("break-setting");
 const lbreakSetting = document.getElementById("lbreak-setting");
 const lbreakInterval = document.getElementById("lbreak-interval");
+
 const saveButton = document.getElementById("save-button");
 
-pomodoroSetting.addEventListener("input", () => {
-	if (
-		pomodoroSetting.value === "" ||
-		typeof Number(pomodoroSetting.value) !== "number"
-	)
-		return;
-
-	let time = Number(pomodoroSetting.value);
-	if (pomodoroSetting.value > pomodoroSetting.max) time = 25;
-	if (pomodoroSetting.value < pomodoroSetting.min) time = 25;
-
-	timer.pomodoro = time;
-});
-
-breakSetting.addEventListener("input", () => {
-	if (
-		breakSetting.value === "" ||
-		typeof Number(breakSetting.value) !== "number"
-	)
-		return;
-
-	let time = Number(breakSetting.value);
-	if (breakSetting.value > breakSetting.max) time = 5;
-	if (breakSetting.value < breakSetting.min) time = 5;
-
-	timer.shortBreak = time;
-});
-
-lbreakSetting.addEventListener("input", () => {
-	if (
-		lbreakSetting.value === "" ||
-		typeof Number(lbreakSetting.value) !== "number"
-	)
-		return;
-
-	let time = Number(lbreakSetting.value);
-	if (lbreakSetting.value > lbreakSetting.max) time = 15;
-	if (lbreakSetting.value < lbreakSetting.min) time = 15;
-
-	timer.longBreak = time;
-});
-
-lbreakInterval.addEventListener("input", () => {
-	if (
-		lbreakInterval.value === "" ||
-		typeof Number(lbreakInterval.value) !== "number"
-	)
-		return;
-
-	let interval = Number(lbreakInterval.value);
-	if (lbreakInterval.value > lbreakInterval.max) interval = 15;
-	if (lbreakInterval.value < lbreakInterval.min) interval = 15;
-});
-
 saveButton.addEventListener("click", () => {
-	localStorage.setItem("pomodoro", Number(pomodoroSetting.value));
-	localStorage.setItem("shortBreak", Number(breakSetting.value));
-	localStorage.setItem("longBreak", Number(lbreakSetting.value));
-	localStorage.setItem("longBreakInterval", Number(lbreakInterval.value));
+	let pomodoroTime, shortBreakTime, longBreakTime, longBreakInterval;
+
+	if (digits_only(pomodoroSetting.value))
+		pomodoroTime = pomodoroSetting.value;
+	if (digits_only(breakSetting.value)) shortBreakTime = breakSetting.value;
+	if (digits_only(lbreakSetting.value)) longBreakTime = lbreakSetting.value;
+	if (digits_only(lbreakInterval.value))
+		longBreakInterval = lbreakInterval.value;
+
+	if (pomodoroSetting.value > 60 || pomodoroSetting.value < 20)
+		pomodoroTime = localStorage.getItem("pomodoro") || 25;
+	if (breakSetting.value > 10 || breakSetting.value < 5)
+		shortBreakTime = localStorage.getItem("shortBreak") || 5;
+	if (lbreakSetting.value > 20 || lbreakSetting.value < 5)
+		longBreakTime = localStorage.getItem("longBreak") || 15;
+	if (lbreakInterval.value > 6 || lbreakInterval.value < 4)
+		longBreakInterval = localStorage.getItem("longBreakInterval") || 4;
+
+	localStorage.setItem("pomodoro", Number(pomodoroTime));
+	localStorage.setItem("shortBreak", Number(shortBreakTime));
+	localStorage.setItem("longBreak", Number(longBreakTime));
+	localStorage.setItem("longBreakInterval", Number(longBreakInterval));
+
 	location.reload();
 });
