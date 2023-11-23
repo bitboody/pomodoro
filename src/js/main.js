@@ -61,11 +61,16 @@ function getRemainingTime(endTime) {
 	};
 }
 
+const sessionsTaken = document.getElementById("sessions-taken");
+
 function startTimer() {
 	let { total } = timer.remainingTime;
 	const endTime = Date.parse(new Date()) + total * 1000;
 
-	if (timer.mode === "pomodoro") timer.session++;
+	if (timer.mode === "pomodoro") {
+		timer.session++;
+		sessionsTaken.innerText = `Sessions taken: ${timer.session}`
+	}
 
 	mainButton.dataset.action = "stop";
 	mainButton.textContent = "stop";
