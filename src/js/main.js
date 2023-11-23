@@ -69,7 +69,7 @@ function startTimer() {
 
 	if (timer.mode === "pomodoro") {
 		timer.session++;
-		sessionsTaken.innerText = `Sessions taken: ${timer.session}`
+		sessionsTaken.innerText = `Sessions taken: ${timer.session}`;
 	}
 
 	mainButton.dataset.action = "stop";
@@ -218,4 +218,17 @@ saveButton.addEventListener("click", () => {
 	localStorage.setItem("longBreakInterval", Number(longBreakInterval));
 
 	location.reload();
+});
+
+const resetButton = document.getElementById("reset-button");
+
+resetButton.addEventListener("click", () => {
+	if (
+		confirm(
+			"Are you sure? This will reset all of the settings back to their default values."
+		)
+	) {
+		localStorage.clear();
+		location.reload();
+	}
 });
