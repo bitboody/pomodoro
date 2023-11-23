@@ -324,6 +324,12 @@ button:active {
 	}
 }
 
+#sessions-taken {
+	color: #f9f9f9;
+	font-weight: 600;
+	font-size: 18px;
+}
+
 .switch {
 	position: relative;
 	display: inline-block;

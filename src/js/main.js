@@ -67,10 +67,10 @@ function startTimer() {
 	let { total } = timer.remainingTime;
 	const endTime = Date.parse(new Date()) + total * 1000;
 
-	if (timer.mode === "pomodoro") {
-		timer.session++;
-		sessionsTaken.innerText = `Sessions taken: ${timer.session}`;
-	}
+	// if (timer.mode === "pomodoro") {
+	// 	timer.session++;
+	// 	sessionsTaken.innerText = `Sessions taken: ${timer.session}`;
+	// }
 
 	mainButton.dataset.action = "stop";
 	mainButton.textContent = "stop";
@@ -85,6 +85,8 @@ function startTimer() {
 			clearInterval(interval);
 			switch (timer.mode) {
 				case "pomodoro":
+					timer.session++;
+					sessionsTaken.innerText = `Sessions taken: ${timer.session}`;
 					if (timer.session % timer.longBreakInterval === 0) {
 						switchMode("longBreak");
 					} else {
@@ -154,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			Notification.requestPermission().then((permission) => {
 				if (permission === "granted") {
 					new Notification(
-						"Awesome! You will be notified at the start of each session"
+						"You will be notified at the start of each session."
 					);
 				}
 			});
