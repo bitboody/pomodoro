@@ -4,6 +4,7 @@ const timer = {
 	longBreak: localStorage.getItem("longBreak") || 15,
 	longBreakInterval: localStorage.getItem("longBreakInterval") || 4,
 	session: 0,
+	hours: localStorage.getItem("hours") || 0,
 };
 
 let interval;
@@ -62,6 +63,7 @@ function getRemainingTime(endTime) {
 }
 
 const sessionsTaken = document.getElementById("sessions-taken");
+const hoursSpent = document.getElementById("hours-spent");
 
 function startTimer() {
 	let { total } = timer.remainingTime;
@@ -125,6 +127,13 @@ function updateClock() {
 
 	const progress = document.getElementById("js-progress");
 	progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
+
+
+	if (timer.mode === "pomodoro") {
+		timer.hours = Number(timer.hours) + 1 / 60 / 60;
+		localStorage.setItem("hours", Number(timer.hours) || 0);
+		hoursSpent.innerText = `Hours spent: ${timer.hours.toFixed(1) || 0}`;
+	}
 }
 
 function switchMode(mode) {

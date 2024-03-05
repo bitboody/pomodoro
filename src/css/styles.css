@@ -324,7 +324,7 @@ button:active {
 	}
 }
 
-#sessions-taken {
+.info {
 	color: #f9f9f9;
 	font-weight: 600;
 	font-size: 18px;
