@@ -18,16 +18,26 @@
 			<div class="navbar">
 				<div class="container nav-container">
 					<input
-						class="checkbox"
-						type="checkbox"
-						autocomplete="off"
-						id="settings"
+					class="checkbox"
+					type="checkbox"
+					autocomplete="off"
+					id="settings"
 					/>
 					<div class="hamburger-lines">
 						<span class="line line1"></span>
 						<span class="line line2"></span>
 						<span class="line line3"></span>
 					</div>
+					<i class="fa-solid fa-chart-simple" id="stats"></i>
+							<div id="stats-expand">
+								<ul>
+									<li><p class="info" id="sessions-taken">Sessions taken today: 0</p></li>
+									<li><p class="info" id="hours-spent-today">Hours spent today: 0.0</p></li>
+									<br>
+									<li><p class="info" id="sessions-taken-ever">Sessions taken: 0</p></li>
+									<li><p class="info" id="hours-spent">Hours spent: 0.0</p></li>
+								</ul>
+							</div>
 					<div class="logo">
 						<h1>Pomody</h1>
 					</div>
@@ -86,10 +96,10 @@
 							</li>
 						</ul>
 						<div class="social-links">
-							<a href="https://github.com/brplcc" target="_blank" style="font-size: 30px; margin-right: 5px;">
+							<a href="https://github.com/bitboody" target="_blank" style="font-size: 30px; margin-right: 5px;">
 								<i class="fa-brands fa-github"></i>
 							</a>
-							<a href="https://twitter.com/brplcc" target="_blank" style="font-size: 30px;">
+							<a href="https://twitter.com/bitboody" target="_blank" style="font-size: 30px;">
 								<i class="fa-brands fa-twitter"></i>
 							</a>
 						</div>
@@ -126,7 +136,7 @@
 					</button>
 				</div>
 				<div class="clock" id="js-clock">
-					<span id="js-minutes">25</span>
+					<span id="js-minutes">00</span>
 					<span class="separator">:</span>
 					<span id="js-seconds">00</span>
 				</div>
@@ -149,8 +159,6 @@
 				<!-- </div> -->
 				<br>
 				<br>
-				<p class="info" id="sessions-taken">Sessions taken: 0</p>
-				<p class="info" id="hours-spent">Hours spent: 0</p>
 			</div>
 		</main>
 		<div class="hidden">

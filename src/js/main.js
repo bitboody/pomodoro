@@ -5,6 +5,7 @@ const timer = {
 	longBreakInterval: localStorage.getItem("longBreakInterval") || 4,
 	session: 0,
 	hours: localStorage.getItem("hours") || 0,
+	sessions: localStorage.getItem("sessions") || 0,
 };
 
 let interval;
@@ -65,14 +66,13 @@ function getRemainingTime(endTime) {
 const sessionsTaken = document.getElementById("sessions-taken");
 const hoursSpent = document.getElementById("hours-spent");
 
+let sessionsTakenEver = document.getElementById("sessions-taken-ever");
+const hoursSpentToday = document.getElementById("hours-spent-today");
+let hoursSpentTodayCounter = 0;
+
 function startTimer() {
 	let { total } = timer.remainingTime;
 	const endTime = Date.parse(new Date()) + total * 1000;
-
-	// if (timer.mode === "pomodoro") {
-	// 	timer.session++;
-	// 	sessionsTaken.innerText = `Sessions taken: ${timer.session}`;
-	// }
 
 	mainButton.dataset.action = "stop";
 	mainButton.textContent = "stop";
@@ -88,7 +88,10 @@ function startTimer() {
 			switch (timer.mode) {
 				case "pomodoro":
 					timer.session++;
+					sessions++;
 					sessionsTaken.innerText = `Sessions taken: ${timer.session}`;
+					sessionsTakenEver.innerText = `Sessions taken: ${timer.sessions}`;
+					localStorage.setItem("sessions", sessions);
 					if (timer.session % timer.longBreakInterval === 0) {
 						switchMode("longBreak");
 					} else {
@@ -131,8 +134,11 @@ function updateClock() {
 
 	if (timer.mode === "pomodoro") {
 		timer.hours = Number(timer.hours) + 1 / 60 / 60;
-		localStorage.setItem("hours", Number(timer.hours) || 0);
 		hoursSpent.innerText = `Hours spent: ${timer.hours.toFixed(1) || 0}`;
+		localStorage.setItem("hours", Number(timer.hours) || 0);
+		
+		hoursSpentTodayCounter += 1 / 60 / 60;
+		hoursSpentToday.innerText = `Hours spent today: ${hoursSpentTodayCounter.toFixed(1) || 0}`;
 	}
 }
 

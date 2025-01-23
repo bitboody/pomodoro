@@ -413,6 +413,30 @@ input:checked + .slider:before {
 	display: grid;
 }
 
+#stats {
+	font-size: 2em;
+	color: #f9f9f9;
+	cursor: help;
+	position: absolute;
+	top: 17px;
+	left: 20px;
+	margin-left: 1.5em;
+}
+
+#stats-expand {
+	display: none;
+}
+
+#stats:hover + #stats-expand {
+	display: block;
+	white-space: nowrap;
+	color: #f9f9f9;
+	width: 10em;
+	border-radius: 30px;
+	padding-left: 3em;
+	padding-top: 4em;
+}
+
 @media (max-width: 641px) {
 	#sliderlabel {
 		padding-top: 2em;
